@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "KBContactsSelectionConfiguration.h"
+#import "OnContactsSelectedDelegate.h"
 
 @interface KBContactsSelectionViewController : UIViewController
+
+@property (weak) id <OnContactsSelectedDelegate> contactsDelegate;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;

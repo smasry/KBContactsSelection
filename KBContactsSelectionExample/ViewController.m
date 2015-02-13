@@ -20,8 +20,9 @@
     KBContactsSelectionViewController *vc = [KBContactsSelectionViewController contactsSelectionViewControllerWithConfiguration:^(KBContactsSelectionConfiguration *configuration) {
         configuration.mode = KBContactsSelectionModeMessages;
         configuration.shouldShowNavigationBar = NO;
-        configuration.tintColor = [UIColor colorWithRed:11.0/255 green:211.0/255 blue:24.0/255 alpha:1];
+        configuration.tintColor = [UIColor blueColor];
     }];
+    [vc setContactsDelegate:self];
 
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -29,11 +30,20 @@
 - (IBAction)present:(UIButton *)sender {
     
     KBContactsSelectionViewController *vc = [KBContactsSelectionViewController contactsSelectionViewControllerWithConfiguration:^(KBContactsSelectionConfiguration *configuration) {
-        configuration.tintColor = [UIColor orangeColor];
+        configuration.tintColor = [UIColor blueColor];
         configuration.mode = KBContactsSelectionModeEmail;
     }];
-
+    [vc setContactsDelegate:self];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)selectedContacts:(NSArray*)contacts{
+#ifndef NDEBUG
+    NSLog(@"[%@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+#endif
+    for (NSString* contact in contacts) {
+        NSLog(@"%@", contact);
+    }
 }
 
 @end

@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14EA2B521A8E5A28006F44E6 /* OnContactsSelectedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnContactsSelectedDelegate.h; path = protocol/OnContactsSelectedDelegate.h; sourceTree = "<group>"; };
 		1F7BCC02A23C2CA0F417AE24 /* libPods-KBContactsSelectionExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KBContactsSelectionExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E89D5D11A3CA8B6001CE6D7 /* KBContactsSelectionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KBContactsSelectionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E89D5D51A3CA8B6001CE6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14EA2B531A8E5A2F006F44E6 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				14EA2B521A8E5A28006F44E6 /* OnContactsSelectedDelegate.h */,
+			);
+			name = protocol;
+			sourceTree = "<group>";
+		};
 		57D93EEB4FA514A7C53CC089 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +182,7 @@
 		8E89D5FA1A3CA8CA001CE6D7 /* KBContactsSelection */ = {
 			isa = PBXGroup;
 			children = (
+				14EA2B531A8E5A2F006F44E6 /* protocol */,
 				8E89D5FB1A3CA94B001CE6D7 /* KBContactsSelectionViewController.h */,
 				8E89D5FC1A3CA94B001CE6D7 /* KBContactsSelectionViewController.m */,
 				8E89D5FD1A3CA94B001CE6D7 /* KBContactsSelectionViewController.xib */,

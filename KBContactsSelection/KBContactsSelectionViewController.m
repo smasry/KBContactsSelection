@@ -104,28 +104,40 @@
 
 - (void)showMessagesViewControllerWithSelectedContacts
 {
-    if ([MFMessageComposeViewController canSendText]) {
-        MFMessageComposeViewController *messageComposeVC = [[MFMessageComposeViewController alloc] init];
-        messageComposeVC.delegate = self;
-        messageComposeVC.recipients = [_kBContactsTableViewDataSource phonesOfSelectedContacts];
-        [self presentViewController:messageComposeVC animated:YES completion:nil];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Messaging not supported", @"") message:NSLocalizedString(@"Messaging on this device is not supported.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
-        [alert show];
+    
+    if (_contactsDelegate) {
+        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource phonesOfSelectedContacts]];
+        _contactsDelegate = nil;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        if ([MFMessageComposeViewController canSendText]) {
+            MFMessageComposeViewController *messageComposeVC = [[MFMessageComposeViewController alloc] init];
+            messageComposeVC.delegate = self;
+            messageComposeVC.recipients = [_kBContactsTableViewDataSource phonesOfSelectedContacts];
+            [self presentViewController:messageComposeVC animated:YES completion:nil];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Messaging not supported", @"") message:NSLocalizedString(@"Messaging on this device is not  supported.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
+            [alert show];
+        }
     }
 }
 
-- (void)showEmailViewControllerWithSelectedContacts
-{
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailComposeVC = [[MFMailComposeViewController alloc] init];
-        mailComposeVC.mailComposeDelegate = self;
-        [mailComposeVC setToRecipients:[_kBContactsTableViewDataSource emailsOfSelectedContacts]];
+- (void)showEmailViewControllerWithSelectedContacts{
+    if (_contactsDelegate) {
+        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource emailsOfSelectedContacts]];
+        _contactsDelegate = nil;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController *mailComposeVC = [[MFMailComposeViewController alloc] init];
+            mailComposeVC.mailComposeDelegate = self;
+            [mailComposeVC setToRecipients:[_kBContactsTableViewDataSource emailsOfSelectedContacts]];
         
-        [self presentViewController:mailComposeVC animated:YES completion:nil];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Messaging not supported", @"") message:NSLocalizedString(@"Sending emails from this device is not supported.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
-        [alert show];
+            [self presentViewController:mailComposeVC animated:YES completion:nil];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Messaging not supported", @"") message:NSLocalizedString(@"Sending emails from this device is not supported.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
+            [alert show];
+        }
     }
 }
 
