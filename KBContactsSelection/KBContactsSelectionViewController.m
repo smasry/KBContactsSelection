@@ -106,9 +106,10 @@
 {
     
     if (_contactsDelegate) {
-        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource phonesOfSelectedContacts] from:KBContactsSelectionModeMessages];
-        _contactsDelegate = nil;
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource phonesOfSelectedContacts] from:KBContactsSelectionModeMessages];
+            _contactsDelegate = nil;
+        }];
     }else{
         if ([MFMessageComposeViewController canSendText]) {
             MFMessageComposeViewController *messageComposeVC = [[MFMessageComposeViewController alloc] init];
@@ -124,9 +125,10 @@
 
 - (void)showEmailViewControllerWithSelectedContacts{
     if (_contactsDelegate) {
-        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource emailsOfSelectedContacts] from:KBContactsSelectionModeEmail];
-        _contactsDelegate = nil;
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource emailsOfSelectedContacts] from:KBContactsSelectionModeEmail];
+            _contactsDelegate = nil;
+        }];
     }else{
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *mailComposeVC = [[MFMailComposeViewController alloc] init];
