@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KBContactsSelectionConfiguration.h"
 
 @protocol OnContactsSelectedDelegate <NSObject>
-- (void)selectedContacts:(NSArray*)contacts;
+- (void)selectedContacts:(NSArray*)contacts from:(KBContactsSelectionMode)mode;
 @end

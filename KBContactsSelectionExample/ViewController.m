@@ -37,13 +37,26 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)selectedContacts:(NSArray*)contacts{
+- (void)selectedContacts:(NSArray*)contacts from:(KBContactsSelectionMode)mode{
 #ifndef NDEBUG
     NSLog(@"[%@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-    for (NSString* contact in contacts) {
-        NSLog(@"%@", contact);
+    if (mode == KBContactsSelectionModeMessages) {
+#ifndef NDEBUG
+        NSLog(@"message");
+#endif
+        for (NSString* contact in contacts) {
+            NSLog(@"%@", contact);
+        }
+    }else if(mode == KBContactsSelectionModeEmail){
+#ifndef NDEBUG
+        NSLog(@"email");
+#endif
+        for (NSString* contact in contacts) {
+            NSLog(@"%@", contact);
+        }
     }
+
 }
 
 @end

@@ -106,7 +106,7 @@
 {
     
     if (_contactsDelegate) {
-        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource phonesOfSelectedContacts]];
+        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource phonesOfSelectedContacts] from:KBContactsSelectionModeMessages];
         _contactsDelegate = nil;
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
@@ -124,7 +124,7 @@
 
 - (void)showEmailViewControllerWithSelectedContacts{
     if (_contactsDelegate) {
-        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource emailsOfSelectedContacts]];
+        [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource emailsOfSelectedContacts] from:KBContactsSelectionModeEmail];
         _contactsDelegate = nil;
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
