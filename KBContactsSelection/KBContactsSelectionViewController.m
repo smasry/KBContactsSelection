@@ -107,7 +107,7 @@
     
     if (_contactsDelegate) {
         [self dismissViewControllerAnimated:YES completion:^(void){
-            [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource phonesOfSelectedContacts] from:KBContactsSelectionModeMessages];
+            [_contactsDelegate selectedContacts:[_kBContactsTableViewDataSource selectedContacts] from:KBContactsSelectionModeMessages];
             _contactsDelegate = nil;
         }];
     }else{
