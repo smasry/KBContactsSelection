@@ -58,7 +58,7 @@ static NSString *cellIdentifier = @"KBContactCell";
 - (void)loadContacts
 {
     APAddressBook *ab = [[APAddressBook alloc] init];
-    ab.fieldsMask = APContactFieldFirstName | APContactFieldLastName | APContactFieldPhonesWithLabels | APContactFieldEmails | APContactFieldRecordID;
+    ab.fieldsMask = APContactFieldFirstName | APContactFieldLastName | APContactFieldPhonesWithLabels | APContactFieldEmails | APContactFieldRecordID | APContactFieldCompositeName;
     ab.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
     
     if (_configuration.mode == KBContactsSelectionModeMessages) {
